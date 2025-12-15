@@ -21,30 +21,18 @@
     .container {
       max-width: 1000px;
       margin: 80px auto;
-      padding: 80px 20px;
+      padding: 96px 28px;
       position: relative;
       animation: fadeIn 1.5s ease-in-out;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 2px solid transparent;
     }
-    @keyframes fadeIn {
+
+        @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(-20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    /* 手繪繁花浮水印效果 */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 85%;
-      height: 85%;
-      background: url('flower-watermark.png') no-repeat center;
-      background-size: contain;
-      opacity: 0.12;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      pointer-events: none;
-    }
-    header {
+        header {
       text-align: center;
       padding: 48px 20px 32px;
       position: relative;
