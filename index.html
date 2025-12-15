@@ -15,16 +15,42 @@
       font-family: "Noto Serif TC", serif;
       background: radial-gradient(circle at top, #9b1c1f, #5c0b0e);
       color: #f9e9c8;
+      overflow-x: hidden;
+      position: relative;
     }
+
+    /* 浮水印 SVG */
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-20deg);
+      width: 500px; /* 可調整大小 */
+      height: 500px;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.15; /* 透明度可調整 */
+    }
+
+    /* 卷軸留白 */
     .container {
       max-width: 1000px;
-      margin: 0 auto;
-      padding: 32px 20px 48px;
+      margin: 80px auto;
+      padding: 80px 20px;
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 1.5s ease-in-out;
     }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     header {
       text-align: center;
       padding: 48px 20px 32px;
       position: relative;
+      z-index: 1;
     }
     header::before,
     header::after {
@@ -51,11 +77,14 @@
       letter-spacing: 2px;
       opacity: 0.9;
     }
+
     .invitation {
       margin: 40px 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
+      position: relative;
+      z-index: 1;
     }
     .card {
       position: relative;
@@ -65,6 +94,7 @@
       box-shadow: 0 25px 60px rgba(0,0,0,0.45);
       cursor: pointer;
       overflow: hidden;
+      transition: transform 0.3s ease;
     }
     .card::before {
       content: "";
@@ -88,8 +118,8 @@
       width: 100%;
       display: block;
       border-radius: 14px;
-      transition: transform 0.3s ease;
     }
+
     .modal {
       display: none;
       position: fixed;
@@ -98,7 +128,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       justify-content: center;
       align-items: center;
     }
@@ -108,12 +138,34 @@
       border-radius: 16px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.7);
     }
+
     footer {
       text-align: center;
       margin-top: 56px;
       font-size: 0.9rem;
       letter-spacing: 2px;
       color: #f3d88a;
+      position: relative;
+      z-index: 1;
+    }
+    .download-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .download-buttons button {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      background: #d4af37;
+      color: #800000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .download-buttons button:hover {
+      background: #fbe18c;
     }
     @media (max-width: 768px) {
       .invitation {
@@ -123,6 +175,25 @@
   </style>
 </head>
 <body>
+  <!-- SVG 浮水印 -->
+  <svg class="watermark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="gold" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="goldenrod" stop-opacity="0.2" />
+      </linearGradient>
+    </defs>
+    <path d="M100 10 
+             C120 20, 140 40, 120 60
+             C140 80, 120 100, 100 90
+             C80 100, 60 80, 80 60
+             C60 40, 80 20, 100 10 Z"
+          fill="url(#goldGradient)" stroke="gold" stroke-width="1"/>
+    <circle cx="100" cy="50" r="5" fill="gold" />
+    <circle cx="120" cy="70" r="4" fill="gold" />
+    <circle cx="80" cy="70" r="4" fill="gold" />
+  </svg>
+
   <div class="container">
     <header>
       <h1>囍</h1>
@@ -139,7 +210,10 @@
     </section>
 
     <footer>
-      <button onclick="downloadImage('invitation-1.png')">📥 下載喜帖</button>
+      <div class="download-buttons">
+        <button onclick="downloadImage('invitation-1.png')">📥 下載喜帖 1</button>
+        <button onclick="downloadImage('invitation-2.png')">📥 下載喜帖 2</button>
+      </div>
       <p>期待與您共享這份喜悅</p>
     </footer>
   </div>
