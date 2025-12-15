@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>婚禮喜帖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Noto Serif TC", serif;
+      background: radial-gradient(circle at top, #9b1c1f, #5c0b0e);
+      color: #f9e9c8;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    header {
+      text-align: center;
+      padding: 48px 20px 32px;
+      position: relative;
+    }
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #e8c56e, transparent);
+    }
+    header::before { top: 20px; }
+    header::after { bottom: 12px; }
+    header h1 {
+      font-size: 2.4rem;
+      letter-spacing: 6px;
+      margin-bottom: 10px;
+      background: linear-gradient(180deg, #fff3c4, #d4af37, #fff3c4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header p {
+      font-size: 1rem;
+      letter-spacing: 2px;
+      opacity: 0.9;
+    }
+    .invitation {
+      margin: 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .card {
+      position: relative;
+      background: linear-gradient(180deg, #fffaf0, #f5e6c8);
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 2px;
+      background: linear-gradient(135deg, #f7e7a1, #c9a24d, #f7e7a1);
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .card img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      color: #f3d88a;
+    }
+    @media (max-width: 768px) {
+      .invitation {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>喜帖</h1>
+      <p>誠摯邀請您蒞臨我們的婚宴</p>
+    </header>
+
+    <!-- 電子喜帖圖片 -->
+    <section class="invitation">
+      <!-- 將 src 換成你的兩張電子喜帖圖片路徑或網址 -->
+      <div class="card">
+        <img src="invitation-1.jpg" alt="電子喜帖一" />
+      </div>
+      <div class="card">
+        <img src="invitation-2.jpg" alt="電子喜帖二" />
+      </div>
+    </section>
+
+    <footer>
+      <p>期待與您共享這份喜悅</p>
+    </footer>
+  </div>
+</body>
+</html>
