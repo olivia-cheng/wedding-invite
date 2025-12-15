@@ -25,11 +25,11 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) rotate(-20deg);
-      width: 500px; /* 可調整大小 */
+      width: 500px;
       height: 500px;
       z-index: 0;
       pointer-events: none;
-      opacity: 0.15; /* 透明度可調整 */
+      opacity: 0.15;
     }
 
     /* 卷軸留白 */
@@ -175,23 +175,48 @@
   </style>
 </head>
 <body>
-  <!-- SVG 浮水印 -->
-  <svg class="watermark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 多朵手繪繁花浮水印 -->
+  <svg class="watermark" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
     <defs>
-      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="gold" stop-opacity="0.6" />
-        <stop offset="100%" stop-color="goldenrod" stop-opacity="0.2" />
+      <linearGradient id="goldGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="gold" stop-opacity="0.6"/>
+        <stop offset="100%" stop-color="goldenrod" stop-opacity="0.2"/>
+      </linearGradient>
+      <linearGradient id="goldGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FFD700" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#DAA520" stop-opacity="0.15"/>
       </linearGradient>
     </defs>
-    <path d="M100 10 
-             C120 20, 140 40, 120 60
-             C140 80, 120 100, 100 90
-             C80 100, 60 80, 80 60
-             C60 40, 80 20, 100 10 Z"
-          fill="url(#goldGradient)" stroke="gold" stroke-width="1"/>
-    <circle cx="100" cy="50" r="5" fill="gold" />
-    <circle cx="120" cy="70" r="4" fill="gold" />
-    <circle cx="80" cy="70" r="4" fill="gold" />
+
+    <!-- 花朵 1 -->
+    <path d="M250 50 
+             C280 70, 300 110, 270 150
+             C300 190, 280 230, 250 210
+             C220 230, 200 190, 230 150
+             C200 110, 220 70, 250 50 Z"
+          fill="url(#goldGradient1)" stroke="gold" stroke-width="1"/>
+
+    <!-- 花朵 2 -->
+    <path d="M120 300
+             C140 320, 160 350, 130 370
+             C160 390, 140 420, 120 400
+             C100 420, 80 390, 110 370
+             C80 350, 100 320, 120 300 Z"
+          fill="url(#goldGradient2)" stroke="gold" stroke-width="1" transform="rotate(-15 120 300)"/>
+
+    <!-- 花朵 3 -->
+    <path d="M380 320
+             C400 340, 420 370, 390 390
+             C420 410, 400 440, 380 420
+             C360 440, 340 410, 370 390
+             C340 370, 360 340, 380 320 Z"
+          fill="url(#goldGradient2)" stroke="gold" stroke-width="1" transform="rotate(10 380 320)"/>
+
+    <!-- 小圓點裝飾 -->
+    <circle cx="250" cy="120" r="4" fill="gold" />
+    <circle cx="280" cy="180" r="3" fill="gold" />
+    <circle cx="150" cy="350" r="3" fill="gold" />
+    <circle cx="400" cy="380" r="3" fill="gold" />
   </svg>
 
   <div class="container">
